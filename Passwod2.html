@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Learning Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url('') no-repeat center center fixed;   /*Тут должна быть ваша картинка (Your picture should be here.)*/
+            background-size: cover;
+        }
+
+        /* Стили для заголовка */
+        .main-header {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #2196F3 0%, #4CAF50 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 0.5rem 2rem;
+        }
+
+        /* Контейнер форм */
+        .auth-container {
+            max-width: 450px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Стили для форм */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: #2d3748;
+            font-weight: 500;
+            padding-left: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #2196F3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+            outline: none;
+        }
+
+        /* Стили кнопок */
+        .auth-button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: #2196F3;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .auth-button:hover:not(:disabled) {
+            background: #4CAF50;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .auth-button:disabled {
+            background: #f44336;
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Переключатель форм */
+        .form-switcher {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #4a5568;
+        }
+
+        .switch-link {
+            color: #2196F3;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .switch-link:hover {
+            color: #4CAF50;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-active {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-header">Code Learning</h1>
+
+    <div class="auth-container">
+        <!-- Форма входа вам прейдётся дописывать вручную это ШАБЛОН -->
+        <div id="loginForm" class="auth-form form-active">
+            <h2 class="form-title">Вход в систему</h2>
+            <form id="loginFormElement">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Электронная почта</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="example@codelearn.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Пароль</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="auth-button" id="loginButton" disabled>Войти</button>
+            </form>
+        </div>
+
+        <!-- Форма регистрации вам прейдётся дописывать вручную это ШАБЛОН -->  
+        <div id="registerForm" class="auth-form hidden">
+            <h2 class="form-title">Регистрация</h2>
+            <form id="registerFormElement">
+                <div class="form-group">
+                    <label class="form-label" for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" class="form-input" placeholder="user@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="registerPassword">Пароль</label>
+                    <input type="password" id="registerPassword" class="form-input" placeholder="Минимум 8 символов" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Подтверждение</label>
+                    <input type="password" id="confirmPassword" class="form-input" placeholder="Повторите пароль" required>
+                </div>
+                <button type="submit" class="auth-button" id="registerButton" disabled>Создать аккаунт</button>
+            </form>
+        </div>
+
+        <div class="form-switcher">
+            <span id="switchText">Нет аккаунта?</span>
+            <span class="switch-link" onclick="toggleForms()">Зарегистрироваться</span>
+        </div>
+    </div>
+
+    <script>
+        // Переключение между формами
+        function toggleForms() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const switchText = document.getElementById('switchText');
+            
+            loginForm.classList.toggle('form-active');
+            loginForm.classList.toggle('hidden');
+            registerForm.classList.toggle('form-active');
+            registerForm.classList.toggle('hidden');
+            
+            switchText.textContent = loginForm.classList.contains('hidden') 
+                ? 'Уже есть аккаунт?' 
+                : 'Нет аккаунта?';
+        }
+
+        // Валидация полей в реальном времени
+        function validateForm(formType) {
+            const email = document.getElementById(`${formType}Email`);
+            const password = document.getElementById(`${formType}Password`);
+            const confirm = formType === 'register' ? document.getElementById('confirmPassword') : null;
+            const button = document.getElementById(`${formType}Button`);
+
+            const isEmailValid = email.checkValidity();
+            const isPasswordValid = password.value.length >= (formType === 'register' ? 8 : 1);
+            const isConfirmValid = formType === 'login' || password.value === confirm.value;
+
+            button.disabled = !(isEmailValid && isPasswordValid && isConfirmValid);
+        }
+
+        // Обработчики событий
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const formType = e.target.id.includes('register') ? 'register' : 'login';
+                validateForm(formType);
+            });
+        });
+
+        // Обработка отправки форм
+        document.getElementById('loginFormElement').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Добро пожаловать!');
+        });
+
+        document.getElementById('registerFormElement').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Регистрация успешна!');
+            toggleForms();
+        });
+
+        // Инициализация валидации
+        validateForm('login');
+        validateForm('register');
+    </script>
+</body>
+</html>

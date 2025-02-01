@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h1 id="formTitle">Вход</h1>
+        <div id="toggleForm">
+            <span id="toggleLogin">Вход</span> | <span id="toggleRegister">Регистрация</span>
+        </div>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="example@mail.com" required>
+            <input type="password" id="loginPassword" placeholder="Пароль" required>
+            <button type="submit" id="loginButton">Войти</button>
+        </form>
+        <form id="registerForm" class="hidden">
+            <input type="email" id="registerEmail" placeholder="Введите вашу почту" required>
+            <input type="password" id="registerPassword" placeholder="Создайте пароль" required>
+            <input type="password" id="registerConfirmPassword" placeholder="Повторите пароль" required>
+            <label>
+                <input type="checkbox" id="showPassword"> Показать пароль
+            </label>
+            <button type="submit" id="registerButton">Зарегистрироваться</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
